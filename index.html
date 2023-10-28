@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Live Chat</title>
+    <link rel = "stylesheet" href = "style.css"/>
+    <style>
+        /* Your existing styles */
+        .hidden {
+            display: none;
+        }
+
+        #user-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: grey;
+            color: #fff;
+            padding: 10px;
+            transition: right 0.3s ease;
+        }
+
+        #open-menu-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            border:none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #close-menu-button {
+            background-color: #007bff;
+            border:none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="container1">
+        <div class="chat-room">
+            <div class="chat-header">
+                <button id="logout"><strong>Logout</strong></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="message-input" required>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Menu -->
+    <button id="open-menu-button"><strong>Users</strong></button>
+    <div id="user-menu" class="hidden">
+        <button id="close-menu-button"><strong>Close</strong></button>
+        <div id="user-list" class="user-list">
+
+        </div>
+    </div>
+
+    <script>
+        const openMenuButton = document.getElementById("open-menu-button");
+        const closeMenuButton = document.getElementById("close-menu-button");
+        const userMenu = document.getElementById("user-menu");
+        const userCount = document.getElementById("user-count");
+
+        openMenuButton.addEventListener("click", function () {
+            userMenu.style.right = "0";
+            userMenu.classList.remove("hidden");
+            // Update the user count (you can fetch this count from your server)
+            
+        });
+
+        closeMenuButton.addEventListener("click", function () {
+            userMenu.style.right = "-300px";
+            userMenu.classList.add("hidden");
+        });
+    </script>
+    <script src = "hope.js"></script>
+</body>
+</html>
